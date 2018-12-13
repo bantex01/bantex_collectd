@@ -53,7 +53,7 @@ def run_search(search_stanza):
     try:
  
         search = str(COLLECTD_CFG[search_stanza]['search'])
-        curl_cmd = "/usr/bin/curl -m " + COLLECTD_CFG[search_stanza]['timeout'] + " -k -s -u admin:iLAiitQjixlrsPPNwXI8nyxgmumraH " + "-d \"exec_mode=" + COLLECTD_CFG[search_stanza]['exec_mode'] + "\"" + " -d \"search=" + COLLECTD_CFG[search_stanza]['search'] + "\"" + " -d \"earliest_time=" + COLLECTD_CFG[search_stanza]['earliest_time'] + "\""  + " -d \"latest_time=" + COLLECTD_CFG[search_stanza]['latest_time'] + "\"" + " -d \"output_mode=json" + "\"" + " https://localhost:8089/services/search/jobs"
+        curl_cmd = "/usr/bin/curl -m " + COLLECTD_CFG[search_stanza]['timeout'] + " -k -s -u SPLUNK_USER:SPLUNK_PASSWORD " + "-d \"exec_mode=" + COLLECTD_CFG[search_stanza]['exec_mode'] + "\"" + " -d \"search=" + COLLECTD_CFG[search_stanza]['search'] + "\"" + " -d \"earliest_time=" + COLLECTD_CFG[search_stanza]['earliest_time'] + "\""  + " -d \"latest_time=" + COLLECTD_CFG[search_stanza]['latest_time'] + "\"" + " -d \"output_mode=json" + "\"" + " https://localhost:8089/services/search/jobs"
         start = time.time()
         out = subprocess.check_output([curl_cmd], shell=True, stderr=subprocess.STDOUT)
         end = time.time()
